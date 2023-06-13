@@ -17,6 +17,8 @@ const Food = (() => {
     
     const load = () => {
         // initialize navbar
+
+        
         console.log("in here");
         const menu = Menu();
         menu.start();

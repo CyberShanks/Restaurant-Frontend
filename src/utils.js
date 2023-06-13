@@ -1,12 +1,27 @@
 import './hover.css';
 
+
+const HoverText = () => {
+    // add special class to the element with :after effects
+    const hoverTextUnderlineAnimation = textElement => {
+        textElement.classList.add('hover-underline-animation');
+    }
+
+    return { hoverTextUnderlineAnimation };
+} 
+
+const HoverImage = () => {
+    // on hover, animate the image, eg. rotate or something else
+    const hoverImageFrameAnimate = imageElement => {
+        imageElement.classList.add('hover-animate-image');
+    }
+
+    return { hoverImageFrameAnimate };
+}
+
 const Card = (imageRef, descriptionText) => {
 
-    // creates a card element
-    // COMPOSED OF HOVERTEXT and HOVERIMAGE !!!!!!!!!!!!!!!!!
-
-
-
+    // COMPOSED OF HOVERIMAGE !
     const _initContainer = () => {
         let cardContainer = document.createElement('div');
         cardContainer.classList = 'card-container';
@@ -17,6 +32,8 @@ const Card = (imageRef, descriptionText) => {
     const _initImageElement = () => {
         let imageElement = document.createElement('img');
         imageElement.classList = 'card-img'
+        const hoveringImage = Object.create(HoverImage);
+        hoveringImage.hoverImageFrameAnimate(imageElement);
         imageElement.setAttribute('src', imageRef);
 
         return imageElement;
@@ -45,25 +62,6 @@ const Card = (imageRef, descriptionText) => {
 
     return { deleteCard };
 }
-
-const HoverText = () => {
-    // add special class to the element with :after effects
-    const hoverTextUnderlineAnimation = textElement => {
-        textElement.classList.add('hover-underline-animation');
-    }
-
-    return { hoverTextUnderlineAnimation };
-} 
-
-const HoverImage = () => {
-    // on hover, animate the image, eg. rotate or something else
-    const hoverImageFrameAnimate = imageElement => {
-        imageElement.classList.add('hover-animate-image');
-    }
-
-    return { hoverImageFrameAnimate };
-}
-
 
 
 export { Card, HoverText, HoverImage };
