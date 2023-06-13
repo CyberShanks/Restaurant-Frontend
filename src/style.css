@@ -1,0 +1,31 @@
+body, html, h1, h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item-img{
+    width: 100px;
+    height: 100px;
+}
+
+.menu-item{
+    display: flex;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+}
+
+.main-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2em;
+}
+
+#center-plate{
+    width: 400px;
+    height: 400px;
+}
+
