@@ -1,0 +1,90 @@
+body, html, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 1fr 7fr;
+}
+
+.navbar{
+    padding: 0.5em 10em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: whitesmoke;
+    font-size: 2em;
+}
+
+.nav-link{
+    font-family:'Times New Roman', Times, serif;
+    
+}
+
+.nav-link, .restaurant-name{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    color: black;
+}
+
+.nav-link::after{
+    transform-origin: bottom right;
+    background-color: #0087ca;
+}
+
+.nav-link::after, .restaurant-name::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: transform 0.25s ease-out;
+}
+
+.restaurant-name::after{
+    background-color: white;
+}
+
+.nav-link:hover::after, .restaurant-name:hover::after{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+#content{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr;
+
+    --s: 20px; /* control the size */
+    
+    --_g: #0000 83%,#b09f79 85% 99%,#0000 101%;
+    background:
+      radial-gradient(27% 29% at right ,var(--_g)) calc(var(--s)/ 2) var(--s),
+      radial-gradient(27% 29% at left  ,var(--_g)) calc(var(--s)/-2) var(--s),
+      radial-gradient(29% 27% at top   ,var(--_g)) 0 calc(var(--s)/ 2),
+      radial-gradient(29% 27% at bottom,var(--_g)) 0 calc(var(--s)/-2)
+      #476074;
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+    align-items: center;
+}
+
+
+#inner1, #inner2{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.restaurant-name{
+    margin: 0.9em 0em;
+    text-align: center;
+    font-size:9rem;
+    font-family: 'Parisienne';
+    font-weight: 500;
+    color: white;
+}
