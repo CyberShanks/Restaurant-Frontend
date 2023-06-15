@@ -1,42 +1,34 @@
 import './stylesheets/mainstyle.css';
-import { Menu } from "./Menu";
+import { Menu } from "./menu.js";
 
-const food = {
-    biryani : _MenuItem(image1, "Title", "Description"),
-    momos : _MenuItem(image2, "", ""),
-    burger : _MenuItem(image3, "", ""),
-    ramen : _MenuItem(image4, "", ""),
-}
-
-const chefs = {
-    ronald : _Chef(image5, "Speciality", "Description"),
-    nitash : _Chef(image6, "", ""),
-    miyuki : _Chef(image7, "", ""),
-    nikki : _Chef(image8, "", ""),
-}
-
-const location = {
-    loc1 : _Location(postcard1, "Address"),
-    loc2 : _Location(postcard2, ""),
-    loc3 : _Location(postcard3, ""),
-    loc4 : _Location(postcard4, ""),
-}
 
 const Restaurant = () => {
     // composed of Menu() object -> gets serveMenu() AND deleteMenu()
     // composed of Chef() object -> gets displayChef() AND deleteChef()
     // composed of Location() object -> gets showLocation() AND deleteLocation()
 
-    const menuToday = Menu();
-    
-    // serveMenu(MenuitemObj, MenuitemObj, MenuitemObj, MenuitemObj);
-    // need to create MenuItem Object -> Image, Title, Description
-    
-    return  Object.assign({}, menuToday, Chef, Locations);
+    // const restaurant = Object.assign({}, Menu);
+    let divContainer1;
+    let divContainer2;
+
+    const inner1 = document.getElementById('inner1');
+    const inner2 = document.getElementById('inner2');
+
+    const makeMenuPage = () => {
+        // let menuToday = Menu();
+        let menuToday = Menu();
+        divContainer1 = menuToday.serve(menuToday.food.item1, menuToday.food.item2);
+        divContainer2 = menuToday.serve(menuToday.food.item3, menuToday.food.item4);
+
+        inner1.appendChild(divContainer1);
+        inner2.appendChild(divContainer2);
+
+        console.log("done");
+    };
+
+    return { makeMenuPage };    
 }
 
-const restaurant = Restaurant(food, chefs, location);
-const menuToday = restaurant.initializeMenu();
-
-restaurant.serveMenu(menuToday.burger, menuToday.momos);
+const restaurant = Restaurant();
+restaurant.makeMenuPage();
 
