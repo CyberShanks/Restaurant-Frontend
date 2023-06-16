@@ -3,41 +3,35 @@ import chickenBiryani from './image_assets/chicken-biryani.jpg';
 import chickenBurger from './image_assets/chicken-burger.jpg';
 import chickenMomos from './image_assets/chicken-momos.jpg';
 import chickenRamen from './image_assets/chicken-ramen.jpg';
+import './stylesheets/menu.css';
 
 const Menu = () => {
 
-    const _MenuItem = (imageRef, description) => {
-        return { imageRef, description };
+    const _MenuItem = (imageRef, title, description) => {
+        return { imageRef, title, description };
     };
 
-    // initialization
-    const food = {
-        item1: _MenuItem(chickenBiryani, "Description"),
-        item2: _MenuItem(chickenBurger, "Description2"),
-        item3: _MenuItem(chickenMomos, "Description3"),
-        item4: _MenuItem(chickenRamen, "Description4"),
+    const foods = {
+        item1: _MenuItem(chickenBiryani, "Chicken Biryani", "A tantalizing blend of fragrant basmati rice, tender chicken pieces, and a medley of aromatic spices, Chicken Biryani is a beloved culinary masterpiece that will transport your taste buds to the vibrant streets of India"),
+        item2: _MenuItem(chickenBurger, "Chicken Burger", "Sink your teeth into a true American classic with our mouthwatering American Chicken Burger, featururing a juicy, flame-grilled chicken patty nestled between two fluffy, toasted buns."),
+        item3: _MenuItem(chickenMomos, "Chicken Momos", "Made with succulent minced chicken that has been seasoned with a delicate blend of herbs and spices. Served with our signature dipping sauce, these bite-sized treats are perfect for sharing"),
+        item4: _MenuItem(chickenRamen, "Chicken Ramen", "This Japanese culinary masterpiece combines tender chicken, springy noodles, and a rich, savory broth to create a bowl of pure bliss. Each spoonful is a symphony aromatic spices and umami-rich ingredients."),
     };
 
-    const serve = (foodItem1, foodItem2) => {
-        // create 2 food cards, return a div containing both
-        const card1 = Card(foodItem1.imageRef, foodItem1.description);
-        const card2 = Card(foodItem2.imageRef, foodItem2.description);
+    const serve = containerElement => {
 
-        let div1 = card1.initialize(card1.imageRef, card1.descriptionText);
-        let div2 = card2.initialize(card2.imageRef, card2.descriptionText);
-
-        const menuContainer = document.createElement('div');
-        menuContainer.appendChild(div1);
-        menuContainer.appendChild(div2);
-
-        return menuContainer;
+        for (let key in foods) {
+            let cardObject = Card(foods[key].imageRef, foods[key].title, foods[key].description);
+            let cardElement = cardObject.initialize(cardObject.imageRef, cardObject.titleText, cardObject.descriptionText);
+            containerElement.appendChild(cardElement);
+        }
     }
 
     const remove = () => {
         // delete food cards
     }
 
-    return { food, serve, remove };
+    return { foods, serve, remove };
 
 };
 

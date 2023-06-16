@@ -1,55 +1,32 @@
-.hover-underline-animation {
-    display: inline-block;
-    position: relative;
-    color: #0087ca;
-}
-
-.hover-underline-animation::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #0087ca;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
-.hover-underline-animation:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
 .hover-animate-image {
-    --size: 16px; /* size of the frame */
-    --border-thickness: 6px; /* border thickness */
-    --width: 250px; /* width of the image */
-    --color: #BF4D28;
-
-    width: var(--width);
+    --s: 6px;  /* size of the frame */
+    --b: 1px;   /* border thickness */
+    --w: 150px; /* width of the image */
+    --c: #979447;
+    
+    width: var(--w);
     aspect-ratio: 1;
     object-fit: cover;
-    padding: var(--size);
-    --_g: #0000 25%, var(--color) 0;
+    padding: var(--s);
+    --_g: #0000 25%,var(--c) 0;
     background:
-        conic-gradient(from 90deg at top var(--border-thickness) left var(--border-thickness), var(--_g)) var(--_p, -5%) var(--_p, -5%),
-        conic-gradient(from 180deg at top var(--border-thickness) right var(--border-thickness), var(--_g)) calc(100% - var(--_p, -5%)) var(--_p, -5%),
-        conic-gradient(from 0deg at bottom var(--border-thickness) left var(--border-thickness), var(--_g)) var(--_p, -5%) calc(100% - var(--_p, -5%)),
-        conic-gradient(from -90deg at bottom var(--border-thickness) right var(--border-thickness), var(--_g)) calc(100% - var(--_p, -5%)) calc(100% - var(--_p, -5%));
-    background-size: 20% 20%;
+      conic-gradient(from 90deg  at top    var(--b) left  var(--b),var(--_g)) 0    0,
+      conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) 100% 0,
+      conic-gradient(from 0deg   at bottom var(--b) left  var(--b),var(--_g)) 0    100%,
+      conic-gradient(from -90deg at bottom var(--b) right var(--b),var(--_g)) 100% 100%;
+    background-size: 15% 15%; 
     background-repeat: no-repeat;
-    outline: calc(var(--width)/2) solid #0005;
-    outline-offset: calc(var(--width)/-2 - var(--size));
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    outline: calc(var(--w)/2) solid rgba(131, 123, 123, 0.3);
+    outline-offset: calc(var(--w)/-2 - var(--s));
+    clip-path: inset(var(--s));
     transition: .4s;
     cursor: pointer;
 }
 
 .hover-animate-image:hover {
-    outline-offset: 2px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    --_p: calc(var(--size)/4);
-    transition: .3s, background-position .3s .35s;
+    outline: var(--b) solid var(--c);
+  outline-offset: var(--s);
+  clip-path: inset(calc(-1*var(--s) - var(--b)));
+  background-size: 45% 45%;
+  transition: linear .3s, background-size .3s .4s;
 }

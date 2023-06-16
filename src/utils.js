@@ -9,9 +9,8 @@ const HoverText = () => {
     return { hoverTextUnderlineAnimation };
 } 
 
-const Card = (imageRef, descriptionText) => {
+const Card = (imageRef, titleText, descriptionText) => {
 
-    // COMPOSED OF HOVERIMAGE !
     const _initContainer = () => {
         let cardContainer = document.createElement('div');
         cardContainer.classList = 'card-container';
@@ -27,6 +26,14 @@ const Card = (imageRef, descriptionText) => {
         return imageElement;
     }
 
+    const _initTitleElement = title => {
+        let titleElement = document.createElement('div');
+        titleElement.classList = 'card-title';
+        titleElement.textContent = title;
+
+        return titleElement;
+    }
+
     const _initDescription = desc => {
         let description = document.createElement('div');
         description.classList = 'card-description';
@@ -35,12 +42,14 @@ const Card = (imageRef, descriptionText) => {
         return description;
     }
 
-    const initialize = (imageRef, desc) => {
+    const initialize = (imageLoc, title, desc) => {
         let cardContainer = _initContainer();
-        let imageElement = _initImageElement(imageRef);
+        let imageElement = _initImageElement(imageLoc);
+        let titleElement = _initTitleElement(title);
         let descriptionElement = _initDescription(desc);
 
         cardContainer.appendChild(imageElement);
+        cardContainer.appendChild(titleElement);
         cardContainer.appendChild(descriptionElement);
 
         return cardContainer;
@@ -52,7 +61,7 @@ const Card = (imageRef, descriptionText) => {
         return null;
     }
 
-    return { imageRef, descriptionText, deleteCard, initialize };
+    return { imageRef, titleText, descriptionText, deleteCard, initialize };
 }
 
 export { Card };

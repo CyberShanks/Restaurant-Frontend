@@ -1,0 +1,42 @@
+.menu-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 2em;
+    column-gap: 10em;
+}
+
+
+.menu-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 1em;
+    gap: 1em;
+}
+
+
+
+.card-container{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr 3fr;
+    background-color: black;
+    padding: 0.7em;
+    border: solid 1px white;
+    border-radius: 10px;
+    color: white;
+}
+
+.hover-animate-image{
+    grid-row: 1/span 2;
+}
+
+.card-title, .card-description{
+    font-family: 'Parisienne';
+}
+
+.card-title{
+    font-size: 2em;
+    text-decoration: underline;
+}
