@@ -1,4 +1,4 @@
-import { Card } from "./utils.js";
+import { MenuCard } from "./utils.js";
 import chickenBiryani from './image_assets/chicken-biryani.jpg';
 import chickenBurger from './image_assets/chicken-burger.jpg';
 import chickenMomos from './image_assets/chicken-momos.jpg';
@@ -21,7 +21,7 @@ const Menu = () => {
     const serve = containerElement => {
 
         for (let key in foods) {
-            let cardObject = Card(foods[key].imageRef, foods[key].title, foods[key].description);
+            let cardObject = MenuCard(foods[key].imageRef, foods[key].title, foods[key].description);
             let cardElement = cardObject.initialize(cardObject.imageRef, cardObject.titleText, cardObject.descriptionText);
             containerElement.appendChild(cardElement);
         }
@@ -31,7 +31,7 @@ const Menu = () => {
         // delete food cards
     }
 
-    return { foods, serve, remove };
+    return { serve, remove };
 
 };
 

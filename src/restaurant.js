@@ -2,18 +2,24 @@ import './stylesheets/mainstyle.css';
 import { Menu } from "./menu.js";
 
 const Restaurant = () => {
-    // composed of Menu() object -> gets serveMenu() AND deleteMenu()
-    // composed of Chef() object -> gets displayChef() AND deleteChef()
-    // composed of Location() object -> gets showLocation() AND deleteLocation()
-
-    // const restaurant = Object.assign({}, Menu);
+    
+    let currentState = "default";
     let newContainer;
 
     const container = document.getElementById('container');
 
-    const _clearPage = () => {
-        const contentContainer = document.getElementById('content');
-        contentContainer.remove();
+    const _clearCurrentState = () => {
+        let removeContainer;
+        if (currentState == "default") removeContainer = document.getElementById('content');
+
+        else if (currentState == "menu") removeContainer = document.querySelector(".menu-grid");
+
+        else if (currentState == "chef") ;
+
+        else if (currentState == "location") ;
+        
+        removeContainer.remove();
+        
     }
 
     const _changeContainerPadding = newPadding => {
@@ -27,9 +33,14 @@ const Restaurant = () => {
         _changeContainerPadding("2em 4em");
     }
 
+    const _changeCurrentState = newState => {
+        currentState = newState;
+    }
+
     const makeMenuPage = () => {
 
-        _clearPage();
+        _clearCurrentState();
+        _changeCurrentState("menu");
         _createSupport();
         let menuToday = Menu();
         menuToday.serve(newContainer);
