@@ -12,24 +12,40 @@ const Restaurant = () => {
 
     const _clearCurrentState = () => {
         let removeContainer;
-        if (currentState == "default") removeContainer = document.getElementById('content');
+        if (currentState == "default") {
+            removeContainer = document.getElementById('content');
+        } 
 
-        else if (currentState == "food") removeContainer = document.querySelector(".menu-grid");
+        else if (currentState == "food") {
+            removeContainer = document.getElementById('menu-grid');
+        }
 
-        else if (currentState == "chef") removeContainer = document.querySelector(".chef-grid");
+        else if (currentState == "chef") {
+            removeContainer = document.getElementById('chef-grid');
+        }
 
-        else if (currentState == "location") removeContainer = document.querySelector(".loc-grid");
-        
-        removeContainer.remove();
-        
+        else if (currentState == "location") {
+            removeContainer = document.getElementById('loc-grid');
+        }
+
+        console.log(removeContainer);
+        removeContainer.classList.remove('elementAnimateIn');
+        removeContainer.classList = 'elementAnimateOut';
+        removeContainer.addEventListener('animationend', (e) => {
+            console.log(e.target);
+            e.target.remove()
+        });
     }
 
     const _changeContainerPadding = newPadding => {
         container.style.padding = newPadding;
     }
+
+
     const _createSupport = className => {
         newContainer = document.createElement('div');
-        newContainer.classList = className;
+        newContainer.setAttribute('id', className);
+        newContainer.classList.add('elementAnimateIn');
 
         container.appendChild(newContainer);
         _changeContainerPadding("2em 4em");
