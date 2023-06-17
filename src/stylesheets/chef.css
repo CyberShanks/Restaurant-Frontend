@@ -1,0 +1,33 @@
+.chef-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4em;
+    justify-items: center;
+}
+
+.chef-card{
+    display: grid;
+    grid-template-rows: 5fr 1fr;
+    background-color: black;
+    border: solid 1px white;
+    color: white;
+    width: 290px;
+    cursor: pointer;
+}
+
+.chef-image{
+    width: 290px;
+    height: 320px;
+
+}
+
+
+.chef-name{
+    font-family: 'Parisienne';
+}
+
+.chef-name{
+    text-align: center;
+    font-size: 2.5em;
+    text-decoration: underline;
+}

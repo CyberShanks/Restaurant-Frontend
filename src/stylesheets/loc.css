@@ -1,0 +1,38 @@
+.find-us{
+    background-color: black;
+    color: white;
+    border: 1px white solid;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.texts{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.res-front-view{
+    grid-column: 2;
+    width: 535px;
+}
+
+.loc-title{
+    font-size: 3em;
+    text-align: center;
+
+}
+
+.loc-title, .loc-address{
+    font-family: serif;
+}
+
+.loc-address{
+    font-size: 2em;
+    text-align: center;
+
+}
+
+
+

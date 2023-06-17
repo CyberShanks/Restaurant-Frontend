@@ -7,16 +7,6 @@
 }
 
 
-.menu-card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1em 1em;
-    gap: 1em;
-}
-
-
-
 .card-container{
     display: grid;
     grid-template-columns: 2fr 3fr;

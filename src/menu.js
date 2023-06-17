@@ -27,11 +27,7 @@ const Menu = () => {
         }
     }
 
-    const remove = () => {
-        // delete food cards
-    }
-
-    return { serve, remove };
+    return { serve};
 
 };
 

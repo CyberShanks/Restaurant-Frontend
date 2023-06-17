@@ -1,14 +1,5 @@
 import './stylesheets/hover.css'
 
-const HoverText = () => {
-    // add special class to the element with :after effects
-    const hoverTextUnderlineAnimation = textElement => {
-        textElement.classList.add('hover-underline-animation');
-    }
-
-    return { hoverTextUnderlineAnimation };
-} 
-
 const MenuCard = (imageRef, titleText, descriptionText) => {
 
     const _initContainer = () => {
@@ -56,15 +47,10 @@ const MenuCard = (imageRef, titleText, descriptionText) => {
     }
     
 
-    const deleteCard = cardContainer => {
-        cardContainer.remove();
-        return null;
-    }
-
-    return { imageRef, titleText, descriptionText, deleteCard, initialize };
+    return { imageRef, titleText, descriptionText, initialize };
 }
 
-const ChefCard = (image, name, desc) => {
+const ChefCard = (image, name) => {
 
     const _initContainer = () => {
         let cardContainer = document.createElement('div');
@@ -89,33 +75,81 @@ const ChefCard = (image, name, desc) => {
         return titleElement;
     }
 
+    const initialize = (imageLoc, title) => {
+        let cardContainer = _initContainer();
+        let imageElement = _initImageElement(imageLoc);
+        let titleElement = _initTitleElement(title);
+
+        cardContainer.appendChild(imageElement);
+        cardContainer.appendChild(titleElement);
+
+        return cardContainer;
+    }
+    
+
+    return { image, name, initialize };
+}
+
+const LocationCard = (image, title, address) => {
+
+    const _initContainer = () => {
+        let cardContainer = document.createElement('div');
+        cardContainer.classList = 'find-us';
+
+        return cardContainer;
+    }
+
+    const _initImageElement = imageLoc => {
+        let imageElement = document.createElement('img');
+        imageElement.classList = 'res-front-view'
+        imageElement.setAttribute('src', imageLoc);
+
+        return imageElement;
+    }
+
+    const _initTempContainer = () => {
+        let tempContainer = document.createElement('div');
+        tempContainer.classList = 'texts';
+
+        return tempContainer;
+    }
+
+    const _initTitleElement = title => {
+        let titleElement = document.createElement('div');
+        titleElement.classList = 'loc-title';
+        titleElement.textContent = title;
+
+        return titleElement;
+    }
+
     const _initDescription = desc => {
         let description = document.createElement('div');
-        description.classList = 'chef-desc';
+        description.classList = 'loc-address';
         description.textContent = desc;
 
         return description;
     }
 
-    const initialize = (imageLoc, title, desc) => {
+    const initialize = (imageLoc, title, address) => {
         let cardContainer = _initContainer();
         let imageElement = _initImageElement(imageLoc);
         let titleElement = _initTitleElement(title);
-        let descriptionElement = _initDescription(desc);
+        let descriptionElement = _initDescription(address);
+        let tempContainer = _initTempContainer();
 
+        tempContainer.appendChild(titleElement);
+        tempContainer.appendChild(descriptionElement);
+
+        cardContainer.appendChild(tempContainer);
         cardContainer.appendChild(imageElement);
-        cardContainer.appendChild(titleElement);
-        cardContainer.appendChild(descriptionElement);
+        
 
         return cardContainer;
     }
     
-    const deleteCard = cardContainer => {
-        cardContainer.remove();
-        return null;
-    }
 
-    return { image, name, desc, deleteCard, initialize };
+    return { image, title, address, initialize };
+    
 }
 
-export { MenuCard, ChefCard };
+export { MenuCard, ChefCard, LocationCard };
